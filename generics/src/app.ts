@@ -74,3 +74,23 @@ demo1.addItem("Talha")
 demo1.addItem("Malik")
 demo1.removeItem("Talha")
 console.log(demo1.getData())
+
+interface CourseGoal{
+    title: string;
+    description: string;
+    completeUntill: Date
+}
+
+//Partial converts all the properties into optional
+function CreateCourseGoal(title: string, description: string, date: Date): CourseGoal{
+    let CourseGoal: Partial<CourseGoal> ={};
+    CourseGoal.title = title;
+    CourseGoal.description= description;
+    CourseGoal.completeUntill= date;
+    return CourseGoal as CourseGoal;    // we know that till yet we have added all the values in course gaol so we can type cast it as CourseGoal
+}
+
+console.log(CreateCourseGoal("Typescript", "Learning Typescript", new Date()))
+
+const arr2: Readonly<string[]> = ["talha", "malik"];
+// arr2.push("another element")    //This will throw an error because once a property set to readonly cannot be changed
